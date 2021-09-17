@@ -29,4 +29,38 @@ Unfortunately, I do not have work experience yet, as I do not have enough skills
 2. German - Intermediate/Upper-intermediate B1/B2
 2. Russian - Native
 3. Belorussian - Advanced
+### CODE EXAMPLE:
+__finds perfect numbers in a given range__
 
+```
+function getOwnDivisors(num) {
+	var arr = [];
+    for(let i = 1, k = 0; i < num; i++){
+        if(num % i == 0){
+            arr[k] = i;
+            k++;
+        }
+    }
+    return arr;
+}
+
+function getSum(arr) {
+	var sum = 0;
+    for(let elem of arr){
+        sum += elem;
+    }
+    return sum;
+}
+
+function getPerfect(start, end){
+    let result = [];
+    for(let i = start; i <= end; i++){
+        if(getSum(getOwnDivisors(i)) == i){
+            result.push(i);
+        }
+    }
+    return result;
+}
+
+ console.log(getPerfect(1, 1000));
+ ```
