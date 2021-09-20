@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./lib/highlight (1)/styles/atom-one-light.min.css">
+    <title>CV</title>
+</head>
+<body>
+    <div class="global-wrap">
+        <header>
+            <div class="header_container">
+                <div class="header_burger"><a href="#" class="icon"><i class="fa fa-bars"></i></a></div>  
+                <nav class="header_menu">
+                    <ul class="menu-main">
+                        <li><a href="#start" class="current" class="main">Start</a></li>
+                        <li><a class="skillsbtn" href="#skills">Skills</a></li>
+                        <li><a class="aboutbtn" href="#about">About Me</a></li>
+                        <li><a class='educationbtn' href="#education">Education</a></li>
+                        <li><a class='langbtn' href="#languages">Languages</a></li>
+                        <li><a class='codebtn' href="#code">Code Example</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="main-wrapper">
+                <div class="start-section" id="start">
+                    <div class="photo"><img src="img/oCzgcBaghUQ.jpg" alt="myphoto" width="300px"></div>
+                    <div class="wrap">
+                        <div class="start-info">
+                            <div class="myname"><h1>Alexey Ignatkevich</h1></div>
+                            <div class="descr">Junior Frontend Developer and rsschool student</div>
+                        </div>
+                        <div class="contact">
+                            <div class="location"><b>Location:</b> Belarus, Brest</div>
+                            <div class="phone"><b>Phone:</b> +375295417824</div>
+                            <div class="email"><b>E-mail:</b> lexa23523@gmail.com</div>
+                            <div class="telegram"><b>Telegram:</b> @mesoke</div>
+                            <div class="github"><a href="#"><b>Github</b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-section">
+                    <div class="skills">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript (Fundamentals, Functional Programming, ES6+, DOM)</li>
+                            <li>Git</li>
+                            <li>C++ and Python (basic knowledge)</li>
+                            <li>Figma</li>
+                            <li>VS Code, WebStorm</li>
+                        </ul>
+                    </div>
+                    <div id="skills"><b>My Skills</b></div>
+                </div>
+                <div class="about-section" id="about">
+                    <div class="about-title"><b>ABOUT ME</b></div>
+                    <div class="about-card"> <i>A fourth-year student of Brest State Technical University. <br>
+                        What comes for my outdoor activities, I'm into sports such as volleyball, baseball and, most of all, football. <br>
+                        Even though my speciality is front-end developing, I'm am a quick-learner and open to any suggestions. <br>
+                        Unfortunately, I do not have work experience yet, as I do not have enough skills and knowledge, but I would like to
+                         get it with pleasure</i></div>
+                </div>
+                <div class="education-section" id="education">
+                    <div class="education-title"><b>EDUCATION</b></div>
+                    <div class="education-card"> <i>4th year student of Brest Technical University (BrSTU). Faculty of Electronic Information
+                         Systems. I study in the specialty automated information processing systems (ASOI).</i></div>
+                </div>
+                <div class="languages-section" id="languages">
+                    <div class="lang-title"><b>Language</b></div>
+                    <div class="languages">
+                        <ol>
+                            <li>English - Pre-Intermediate/A2 (according to the online test at Efset.org)</li>
+                            <li>German - Intermediate/Upper-intermediate B1/B2</li>
+                            <li>Russian - Native</li>
+                            <li>Belorussian - Advanced</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="code-section" id="code">
+                    <div class="code-title"><b>Code Example</b></div>
+                    <div class="code-example"> <h4>Finds perfect numbers in a given range</h4>
+                        <pre> <code class="jscode">
+function getOwnDivisors(num) { 
+    var arr = [];
+    for(let i = 1, k = 0; i < num; i++){
+        if(num % i == 0){
+            arr[k] = i;
+            k++;
+        }
+    }
+    return arr;
+}
+                                
+function getSum(arr) {
+    var sum = 0;
+    for(let elem of arr){
+        sum += elem;
+    }
+    return sum;
+}
+                                
+function getPerfect(start, end){
+    let result = [];
+    for(let i = start; i <= end; i++){
+        if(getSum(getOwnDivisors(i)) == i){
+            result.push(i);
+        }
+    }
+    return result;
+}
+                                
+console.log(getPerfect(1, 1000));
+                        </code>
+                    </pre>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        <footer>
+            <div class="footer-wrap">
+                <div class="help-wrap">
+                    <div class="rslogo"><a href="https://rs.school/js/"><img src="./img/rs_school_js.svg" alt="rsschool-logo" 
+                        width="100px"></a></div>
+                    <div class="year">2021</div>
+                </div>
+                <div class="footer-git"><a href="#"><img src="./img/github_logo.png" alt="" width="100px"></a></div>
+            </div>
+        </footer>
+        <script src="./lib/highlight (1)/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <script src="./main.js"></script>
+</body>
+</html>
