@@ -1,0 +1,475 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+    font-family: Roboto;
+     src: url("assets/fonts/Roboto/Roboto-Thin.ttf");
+}
+
+@font-face {
+    font-family: Forum;
+     src: url("assets/fonts/Forum/Forum-Regular.ttf");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header, main, footer {
+    margin: 0 auto;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    border: none;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.logo-section{
+    background-image: url("./assets/svg/logo.svg");
+    color: #FFFFFF;
+    width: 49px;
+    height: 26px;
+    margin: 0;
+    margin-top: 60px;
+}
+
+.logo-text {
+    color: #FFFFFF;
+    font-size: 28px;
+    text-transform: uppercase;
+    padding-left: 74px;
+    font-family: Forum;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+
+li a {
+    text-decoration: none;
+}
+
+header {
+    background-color: #030303;
+    line-height: 31px;
+}
+
+.dark-section {
+    background-color: #030303;
+    color: #FFFFFF;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 150px;
+}
+
+.navigation-list {
+    display: flex;
+    padding-top: 61px;
+}
+
+.nav-btn:not(:last-child) {
+    margin-right: 57px;
+}
+
+.nav-btn a {
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    font-size: 22px;
+    font-weight: 100;
+    font-family: Roboto;
+}
+
+.nav-btn a:hover {
+    color: #9D8665;
+}
+
+/* ----------------WELCOME SECTION------------------ */
+
+.welcome-container {
+    display: flex;
+    height: 810px;
+    justify-content: space-between;
+}
+
+.welcome-contant-wrapper {
+    color: #FFFFFF;
+}
+
+.slider-welcome img {
+    width: 1000px;
+    height: 750px;
+}
+
+.welcome-text {
+    font-family: Forum;
+    font-size: 80px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 302px;
+    letter-spacing: 5px;
+    line-height: 90px;
+}
+
+.welcome-helptext {
+    position: absolute;
+    top: 508px;
+    font-weight: 300;
+    font-family: Roboto;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.discbtn {
+    position: absolute;
+    top: 614px;
+    width: 360px;
+    height: 75px;
+    border-radius: 8px;
+    background-color: #710707;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 26px;
+}
+
+.welcome-slider-wrapper {
+    width: 600px;
+    height: 120px;
+    position: absolute;
+    top: 840px;
+    margin-left: 840px;
+    color: #FFFFFF;
+    display: flex;
+}
+
+/* ----------------VISITING SECTION------------------ */
+
+.visiting-section {
+
+    background-color: #fff;
+    margin-top: 75px;
+}
+
+.main-title-visiting {
+    color:#9D8665;
+    font-size: 80px;
+    line-height: 90px;
+    letter-spacing: 5px;
+    font-family: Forum;
+    text-transform: uppercase;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #710707;
+}
+
+.visiting-grid {
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    grid-column-gap: 100px;
+    grid-row-gap: 75px;
+}
+
+.visiting-grid {
+   margin-top: 75px;
+}
+
+.img-title-visiting {
+    margin-top: 25px;
+}
+
+.maincard-title-visiting {
+    font-family: Forum;
+    font-size: 32px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 35,35px;
+    padding-bottom: 10px;
+    width: 300px;
+    border-bottom: 2px solid #710707;
+}
+
+.helpcard-title-visiting {
+    margin-top: 13px;
+    font-family: Roboto;
+    font-size: 22px;
+    line-height: 25,78px;
+    font-weight: 200;
+}
+
+.helpspan {
+    font-size: 18px;
+    margin-top: 13px;
+    line-height: 21,09px;
+}
+
+ /* --------------------EXPLORE SECTION----------------  */
+
+.explore-section {
+    height: 865px;
+}
+
+.explore-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 75px;
+    padding-top: 75px;
+    /* padding-bottom: 75px; */
+}
+
+.explore-imgs {
+    position: relative;
+    height: 700px;  
+    padding-top: 20px;
+}
+
+/* .neobr {
+    position: absolute;
+    z-index: 10;
+    width: 450px;
+} */
+
+/* .explore-imgs img::after {
+    content: '';
+    background-image: url("./assets/img/noobr.png");
+    width: 400px;
+} */
+
+
+/* .obr {
+    position: absolute;
+    z-index: 1;
+} */
+
+.explore-text {
+    padding-right: 60px;
+}
+
+.explore-header {
+    font-size: 80px;
+    font-family: Forum;
+    line-height: 90px;
+    letter-spacing: 5px;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 660px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #710707;
+    margin-bottom: 75px;
+}
+
+.explore-text p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 38px;
+    margin-bottom: 25px;
+}
+
+.highlight {
+    color: #CAAA7D;
+}
+
+/* ------------------VIDEO SECTION----------------  */
+
+.video-header {
+    vertical-align: middle;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 75px;
+    margin-bottom: 75px;
+    align-items: center;
+}
+
+.video-header h2 {
+    font-family: Forum;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #9D8665;
+}
+
+.video-header p {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 38.5px;
+}
+
+.video {
+    background-image: url(./assets/img/video.png);
+    height: 650px;
+    text-align: center;
+}
+
+.video img {
+    margin-top: 215px;
+}
+
+.video-control-panel {
+    background-color: #000000;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 0px 30px;
+}
+
+#play {
+    background-image: url(./assets/svg/play.svg);
+    width: 27px;
+}
+
+#volume {
+    background-image: url(./assets/svg/volume.svg);
+    width: 45px;
+    /* margin-right: 50px; */
+}
+
+#fullscreen {
+    background-image: url(./assets/svg/Frame.svg);
+    width: 45px;
+    /* margin-right: 30px; */
+}
+
+#video-bar {
+    width: 929px;
+}
+
+#volume-bar {
+    width: 155px;
+}
+
+.video-control-panel button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
+.progress {
+    background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);
+    /* border: solid 2px #82CFD0; */
+    /* border-radius: 2px; */
+    height: 8px;
+    /* width: 400px; */
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+}
+  
+.progress::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    background: #FFF;
+}
+
+.recommended-video-wrap {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 452px 452px 452px;
+      column-gap: 42px;
+}
+
+.poster1 {
+    background-image: url(./assets/img/poster3.png);
+    height: 254px;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+
+.poster2 {
+    background-image: url(./assets/img/poster1.png);
+    height: 254px;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+
+.poster3 {
+    background-image: url(./assets/img/poster2.png);
+    height: 254px;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+
+
+
+/* .poster-title {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 36px;
+}
+
+.poster-title span {
+    margin-top: 10px;
+    margin-left: -20px;
+} */
