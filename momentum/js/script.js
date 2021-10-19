@@ -74,31 +74,28 @@ function setBg() {
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${bgNum}.jpg`;
     img.onload = () => {      
-        body.style.backgroundImage = "url(" + "'" + `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${bgNum}.jpg` + "'" + ")";
+        document.body.style.backgroundImage = `url("https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOf}/${bgNum}.jpg")`;
     }; 
-
 }
 
-slideNext.addEventListener('click', getSlideNext);
-slidePrev.addEventListener('click', getSlidePrev);
+document.addEventListener('DOMContentLoaded', setBg);
 
 function getSlideNext() {
-    if(rand == 20) {
-        rand = 1;
-    } else {
-        rand++;
-    };
+    bgNumber++;
+    if (bgNumber > 20)
+        bgNumber = 1;
     setBg();
 }
 
 function getSlidePrev() {
-    if(rand == 1) {
-        rand = 20;
-    } else {
-        rand--;
-    };
+    bgNumber--;
+    if (bgNumber < 1)
+        bgNumber = 20;
     setBg();
 }
+
+slidePrev.addEventListener('click', getSlidePrev);
+slideNext.addEventListener('click', getSlideNext);
 
 // ------------WEATHER-----------------
 
@@ -164,8 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // -------------AUDIO-PLAYER---------------
 
-
-
 import playList from './playList.js';
 
 const playBtn = document.querySelector('.play');
@@ -173,8 +168,80 @@ const playPrevBtn = document.querySelector('.play-prev');
 const playNextBtn = document.querySelector('.play-next');
 const playListUl = document.querySelector('.play-list');
 const listItem = document.querySelectorAll('.play-item');
+// const volumeBtn = document.querySelector('.volume-button')
+
+
+const timeline = audioPlayer.querySelector(".timeline");
+timeline.addEventListener("click", e => {
+  const timelineWidth = window.getComputedStyle(timeline).width;
+  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  audio.currentTime = timeToSeek;
+}, false);
+
+const volumeSlider = audioPlayer.querySelector(".controls .volume-slider");
+volumeSlider.addEventListener('click', e => {
+  const sliderWidth = window.getComputedStyle(volumeSlider).width;
+  const newVolume = e.offsetX / parseInt(sliderWidth);
+  audio.volume = newVolume;
+  audioPlayer.querySelector(".controls .volume-percentage").style.width = newVolume * 100 + '%';
+}, false)
+
+setInterval(() => {
+    const progressBar = audioPlayer.querySelector(".progress");
+    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+    audioPlayer.querySelector(".songtime .current").textContent = getTimeCodeFromNum(
+      audio.currentTime
+    );
+  }, 100);
+
+  const playerBtn = audioPlayer.querySelector(".controls .toggle-play");
+  playerBtn.addEventListener(
+    "click",
+    () => {
+      if (audio.paused) {
+        playerBtn.classList.remove("icono-play");
+        playerBtn.classList.add("icono-pause");
+        audio.play();
+      } else {
+        playerBtn.classList.remove("icono-pause");
+        playerBtn.classList.add("icono-play");
+        audio.pause();
+      }
+    },
+    false
+  );
+
+  audioPlayer.querySelector(".volume-button").addEventListener("click", () => {
+    const volumeEl = audioPlayer.querySelector(".volume");
+    audio.muted = !audio.muted;
+    if (audio.muted) {
+      volumeEl.classList.remove("icono-volumeMedium");
+      volumeEl.classList.add("icono-volumeMute");
+    } else {
+      volumeEl.classList.add("icono-volumeMedium");
+      volumeEl.classList.remove("icono-volumeMute");
+    }
+  });
+  
+  function getTimeCodeFromNum(num) {
+    let seconds = parseInt(num);
+    let minutes = parseInt(seconds / 60);
+    seconds -= minutes * 60;
+    const hours = parseInt(minutes / 60);
+    minutes -= hours * 60;
+  
+    if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+    return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+      seconds % 60
+    ).padStart(2, 0)}`;
+  }
+  
+
+const songDuration = document.querySelector(".length");
+const songName = document.querySelector(".songname");
 
 let isPlay = false;
+
 
 
 for (let i = 0; i < playListUl.children.length; i++) {
@@ -188,17 +255,23 @@ function playAudio() {
     if (isPlay === true) {
         audio.pause()
         isPlay = false
-        playBtn.classList.toggle('pause')
+        playBtn.classList.toggle('icono-crossCircle')
+        playBtn.classList.add('play')
         audioPlayer.classList.add('hide');
+        playerBtn.classList.add('icono-pause')
     } else {
         audio.src = playList[currentSound].src;
         audio.currentTime = 0;
         isPlay = true;
         audio.play();
-        playBtn.classList.toggle('pause')
+        playBtn.classList.toggle('icono-crossCircle')
         listItem[currentSound].classList.add('item-active')
-        audioPlayer.classList.remove('hide');
+        playerBtn.classList.remove('icono-play')
+        audioPlayer.classList.remove('hide')
+        playBtn.classList.remove('play')
     }
+    songDuration.textContent = ` ${playList[currentSound].duration}`;
+    songName.textContent = `${playList[currentSound].title}`
 }
 
 function playNext() {
@@ -206,13 +279,13 @@ function playNext() {
         if (currentSound < playList.length - 1) {
             currentSound++
             isPlay = false
-            playBtn.classList.toggle('pause')
+            playBtn.classList.toggle('icono-crossCircle')
             listItem[currentSound - 1].classList.remove('item-active')
             playAudio()
         } else {
             currentSound = 0
             isPlay = false
-            playBtn.classList.toggle('pause')
+            playBtn.classList.toggle('icono-crossCircle')
             listItem[listItem.length - 1].classList.remove('item-active')
             playAudio()
         }
@@ -269,3 +342,5 @@ playBtn.addEventListener('click', playAudio);
 playNextBtn.addEventListener('click', playNext);
 playPrevBtn.addEventListener('click', playPrev);
 audio.addEventListener('ended', playNext);
+
+
