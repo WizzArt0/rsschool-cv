@@ -1,3 +1,5 @@
+// jshint maxerr:100
+
 const time = document.querySelector('.time');
 const date = document.querySelector('.date');
 const greeting = document.querySelector('.greeting');
@@ -14,6 +16,7 @@ const author = document.querySelector('.author');
 const changeQuote = document.querySelector('.change-quote');
 const humidity = document.querySelector('.humidity');
 const windSpeed = document.querySelector('.wind-speed');
+const audioPlayer = document.querySelector('.audio-player');
 
 // ---------TIME------------
 
@@ -99,26 +102,49 @@ function getSlidePrev() {
 
 // ------------WEATHER-----------------
 
-async function getWeather() {  
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=ru&appid=5e472ae27b533bf0185d2e1e6cf974be&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json(); 
-    weatherIcon.className = 'weather-icon owf';
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    temperature.textContent = `${Math.round(data.main.temp)}°C`;
-    weatherDescription.textContent = data.weather[0].description;
-    windSpeed.textContent = `Скорость ветра: ${Math.round(data.wind.speed)} m/s`;
-    humidity.textContent = `Влажность: ${Math.round(data.main.humidity)}%`
+const weatherError = document.querySelector('.weather-error')
+
+async function getWeatherOnLoad() {
+    getLocalStorage()
+    getWeather()
 }
 
-city.addEventListener('change', getWeather);
+async function getWeather() {  
+    let cityName = '';
+    if (city.value == '' || city == undefined) {
+        cityName = 'Минск'
+    } else {
+        cityName = city.value
+    }
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&lang=ru&appid=5e472ae27b533bf0185d2e1e6cf974be&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
 
-getWeather()
+    if (data.cod == '404') {
+        weatherError.innerHTML = `Error! ${data.message} for "${cityName}"`
+        weatherIcon.style.display = 'none'
+        temperature.textContent = ''
+        weatherDescription.textContent = ''
+        windSpeed.textContent = ''
+        humidity.textContent = ''
+    } else {
+        weatherError.innerHTML = ''
+        weatherIcon.style.display = 'block'
+        weatherIcon.className = 'weather-icon owf';
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${Math.round(data.main.temp)}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        windSpeed.textContent = `Скорость ветра: ${Math.round(data.wind.speed)} m/s`;
+        humidity.textContent = `Влажность: ${Math.round(data.main.humidity)}%`
+    }
+}
+
+document.addEventListener('DOMContentLoaded', getWeatherOnLoad)
+city.addEventListener('change', getWeather)
 
 // -------------QUOTES-------------------
 
-
-changeQuote.addEventListener('click', getQuotes)
+changeQuote.addEventListener('click', getQuotes);
 // document.addEventListener('DOMContentLoaded', getQuotes);
 
 async function getQuotes() {
@@ -129,13 +155,16 @@ async function getQuotes() {
     let randomNum = getRandomNum(0, data.length);
     quote.innerHTML = `${data[randomNum].text}`;
     author.innerHTML = `${data[randomNum].author}`;
-  }
+}
 
-getQuotes()
+document.addEventListener('DOMContentLoaded', getQuotes);
+document.addEventListener('DOMContentLoaded', () => {
+    listItem[0].classList.add('item-active')
+});
 
 // -------------AUDIO-PLAYER---------------
 
-// jshint maxerr:100
+
 
 import playList from './playList.js';
 
@@ -160,6 +189,7 @@ function playAudio() {
         audio.pause()
         isPlay = false
         playBtn.classList.toggle('pause')
+        audioPlayer.classList.add('hide');
     } else {
         audio.src = playList[currentSound].src;
         audio.currentTime = 0;
@@ -167,6 +197,7 @@ function playAudio() {
         audio.play();
         playBtn.classList.toggle('pause')
         listItem[currentSound].classList.add('item-active')
+        audioPlayer.classList.remove('hide');
     }
 }
 

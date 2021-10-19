@@ -6,6 +6,8 @@
   <link href="assets/favicon.ico" rel="shortcut icon" />
   <link rel="stylesheet" href="css/owfont-regular.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+  <!-- <link rel="stylesheet" href="css/style.scss" /> -->
   <title>momentum</title>
 </head>
 <body>
@@ -35,6 +37,7 @@
       </div>
       <div class="wind"></div>
       <div class="humidity"></div>
+      <div class="weather-error"></div>
     </div>
   </header>
   <main class="main">
@@ -54,6 +57,36 @@
     <div>
       <div class="quote"></div>
       <div class="author"></div>
+    </div>
+    <!-- <audio controls>
+      <source src="https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/backsound.mp3"  type="audio/mp3">
+    </audio> -->
+    <!-- <div style="width: 50px; height: 50px;"></div> -->
+    <div class="audio-player hide">
+      <div class="timeline">
+        <div class="progress"></div>
+      </div>
+      <div class="controls">
+        <div class="play-container">
+          <div class="play icono-play">
+        </div>
+        </div>
+        <div class="songtime">
+          <div class="current">0:00</div>
+          <div class="divider">/</div>
+          <div class="length"></div>
+        </div>
+        <div class="songname">Music Songssssssssssssss</div>
+        <div class="volume-container">
+          <div class="volume-button">
+            <div class="volume icono-volumeMedium"></div>
+          </div>
+          
+          <div class="volume-slider">
+            <div class="volume-percentage"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
   <script type="module" src="js/script.js"></script>
