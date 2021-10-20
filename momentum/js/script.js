@@ -34,7 +34,7 @@ function showDate() {
 
 function getTimeOfDay() {
     const hours = new Date().getHours();
-    let timesOfDay = ['night', 'morning', 'day', 'evening'];
+    let timesOfDay = ['night', 'morning', 'afternoon', 'evening'];
     // console.log(Math.floor(hours / 6))
     return timesOfDay[Math.floor(hours / 6)];
 }
@@ -74,7 +74,7 @@ function setBg() {
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${bgNum}.jpg`;
     img.onload = () => {      
-        document.body.style.backgroundImage = `url("https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOf}/${bgNum}.jpg")`;
+        document.body.style.backgroundImage = `url("https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${bgNum}.jpg")`;
     }; 
 }
 
@@ -199,12 +199,12 @@ setInterval(() => {
     "click",
     () => {
       if (audio.paused) {
-        playerBtn.classList.remove("icono-play");
-        playerBtn.classList.add("icono-pause");
+        playerBtn.classList.remove("play");
+        playerBtn.classList.add("pause");
         audio.play();
       } else {
-        playerBtn.classList.remove("icono-pause");
-        playerBtn.classList.add("icono-play");
+        playerBtn.classList.remove("pause");
+        playerBtn.classList.add("play");
         audio.pause();
       }
     },
@@ -258,7 +258,7 @@ function playAudio() {
         playBtn.classList.toggle('icono-crossCircle')
         playBtn.classList.add('play')
         audioPlayer.classList.add('hide');
-        playerBtn.classList.add('icono-pause')
+        // playerBtn.classList.add('icono-pause')
     } else {
         audio.src = playList[currentSound].src;
         audio.currentTime = 0;
@@ -266,7 +266,7 @@ function playAudio() {
         audio.play();
         playBtn.classList.toggle('icono-crossCircle')
         listItem[currentSound].classList.add('item-active')
-        playerBtn.classList.remove('icono-play')
+        playerBtn.classList.add('pause')
         audioPlayer.classList.remove('hide')
         playBtn.classList.remove('play')
     }

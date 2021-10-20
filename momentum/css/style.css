@@ -100,19 +100,19 @@ body {
 }
 
 .play {
-  width: 40px;
-  height: 40px;
-  background-size: 40px 40px;
+  width: 35px;
+  height: 35px;
+  background-size: 35px 35px;
+  margin: 0px 5px;
   background-image: url("../assets/svg/play.svg");
 }
 
-.icono-crossCircle {
-  /* width: 50px;
-  height: 50px; */
-  background-size: 40px 40px;
-}
 
 .pause {
+  width: 35px;
+  height: 35px;
+  background-size: 35px 35px;
+  margin: 0px 5px;
   background-image: url("../assets/svg/pause.svg");
 }
 
@@ -360,9 +360,9 @@ body {
   border-left: 13px solid white;
 } */
 
-.toggle-play {
+.icono-play {
   height: 15px;
-  width: 30px;
+  width: auto;
   cursor: pointer;
   position: relative;
 }
