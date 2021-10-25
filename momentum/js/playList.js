@@ -19,4 +19,4 @@ const playList = [
       duration: '02:22'
     }
   ]
-export default playList;
+export default playList;  

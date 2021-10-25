@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="css/owfont-regular.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-  <!-- <link rel="stylesheet" href="css/style.scss" /> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bad+Script">
   <title>momentum</title>
 </head>
 <body>
   <header class="header">
-    <div class="player">
+    <div class="player hidden">
       <div class="player-controls">
         <!-- <button class="play-prev player-icon"></button> -->
         <button class="play player-icon"></button>
@@ -52,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div class="weather">
+    <div class="weather hidden">
       <input type="text" class="city" placeholder="Минск" />
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
@@ -74,16 +75,54 @@
     </div>
     <time class="time"></time>
     <date class="date"></date>
-    <div class="greeting-container">
+    <div class="greeting-container hidden">
       <span class="greeting"></span>
       <input type="text" class="name" placeholder="[Enter name]" />
     </div>
   </main>
+</div>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="todo-container">
+      <div class="todoicon"><h2><i id="pensil" class="fas fa-pencil-alt"></i></h2></div>
+      <div id="todo-wrap" class="display animate" draggable="true">
+        <h1>Мои списки дел <i id="pensil" class="fas fa-pencil-alt"></i></h1>
+        <input class="addtodo" type="text" placeholder="Добавить пункт">
+        <ul class="todos">
+        </ul>
+        <div id="buttons">
+            <button class="todobtn add">Добавить</button>
+            <button class="todobtn save">Сохранить</button>
+            <button class="todobtn clear">Очистить</button>
+        </div>
+      </div>
+    </div>
+    <div class="quote-container hidden">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </div>
+    <button class="settings-button"></button>
+    <div class="pop-up animate" draggable="true">
+      <div class="pop-up-container">
+        <div class="pop-up-body">
+          <button class="close-pop-up"></button>
+          <p class="settings-title">Settings</p>
+          <div class="pop-up-content">
+            <p class="setting-description">Greeting widget</p>
+            <input type="checkbox" name="favorite1" id="greeting-check" checked>
+            <p class="setting-description">Audio player widget</p>
+            <input type="checkbox" name="favorite2" id="player-check" checked>
+            <p class="setting-description">Weather widget</p>
+            <input type="checkbox" name="favorite3" id="weather-check" checked>
+            <p class="setting-description">ToDo List widget</p>
+            <input type="checkbox" name="favorite4" id="todo-check" checked>
+            <p class="setting-description">Quotes widget</p>
+            <input type="checkbox" name="favorite5" id="quotes-check" checked>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
   <script type="module" src="js/script.js"></script>
