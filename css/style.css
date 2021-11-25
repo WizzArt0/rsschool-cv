@@ -6,6 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    scroll-behavior: smooth;
 }  
 
 .global-wrap {
